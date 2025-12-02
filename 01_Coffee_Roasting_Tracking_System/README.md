@@ -73,6 +73,15 @@ pytest tests/
 pytest tests/test_stage_detector.py -v
 ```
 
+## 배포 방법
+
+### Streamlit Cloud 배포 (권장)
+1. GitHub에 프로젝트 푸시
+2. [Streamlit Cloud](https://streamlit.io/cloud)에서 배포
+3. Main file path: `app/main.py`
+
+자세한 배포 방법은 `../../DEPLOYMENT_GUIDE.md`를 참조하세요.
+
 ## 프로젝트 위치
 
 `../../Coffee-roasting-tracking-system/`

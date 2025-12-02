@@ -66,6 +66,15 @@ streamlit run app/web/main.py
 tail -f /var/log/nginx/access.log | python src/collector/nginx_parser.py
 ```
 
+## 배포 방법
+
+### Streamlit Cloud 배포
+1. GitHub에 프로젝트 푸시
+2. [Streamlit Cloud](https://streamlit.io/cloud)에서 배포
+3. Main file path: `app/web/main.py`
+
+자세한 배포 방법은 `../../DEPLOYMENT_GUIDE.md`를 참조하세요.
+
 ## 프로젝트 위치
 
 `../../Log-AI-Predictor/`

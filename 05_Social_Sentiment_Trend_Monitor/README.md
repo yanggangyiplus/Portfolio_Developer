@@ -80,6 +80,16 @@ pytest tests/
 pytest tests/test_sentiment_analyzer.py -v
 ```
 
+## 배포 방법
+
+### Streamlit Cloud 배포
+1. GitHub에 프로젝트 푸시
+2. [Streamlit Cloud](https://streamlit.io/cloud)에서 배포
+3. Main file path: `app/web_demo.py`
+4. YouTube API 키는 Secrets에 추가 (선택사항)
+
+자세한 배포 방법은 `../../DEPLOYMENT_GUIDE.md`를 참조하세요.
+
 ## 프로젝트 위치
 
 `../../Social-sentiment-trend-monitor/`

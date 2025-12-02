@@ -82,6 +82,15 @@ pytest tests/
 pytest tests/test_chunker.py -v
 ```
 
+## 배포 방법
+
+### AWS Lambda + API Gateway 배포
+1. AWS CDK 설치 및 설정
+2. AWS 자격증명 설정
+3. `cd infrastructure/cdk && cdk deploy` 실행
+
+자세한 배포 방법은 `../../DEPLOYMENT_GUIDE.md`를 참조하세요.
+
 ## 프로젝트 위치
 
 `../../Serverless-RAG-Assistant/`

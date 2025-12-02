@@ -81,6 +81,20 @@ pytest tests/
 pytest tests/test_cnn_model.py -v
 ```
 
+## 배포 방법
+
+### HuggingFace Spaces 배포 (권장)
+1. HuggingFace Spaces에 프로젝트 업로드
+2. SDK: Streamlit
+3. App file: `app/web/web_demo.py`
+
+### Streamlit Cloud 배포 (대안)
+1. GitHub에 프로젝트 푸시
+2. [Streamlit Cloud](https://streamlit.io/cloud)에서 배포
+3. Main file path: `app/web/web_demo.py`
+
+자세한 배포 방법은 `../../DEPLOYMENT_GUIDE.md`를 참조하세요.
+
 ## 프로젝트 위치
 
 `../../Ai-image-detector/`
