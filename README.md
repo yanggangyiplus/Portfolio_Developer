@@ -125,6 +125,14 @@ AWS Serverless 기반 RAG(Retrieval-Augmented Generation) 서비스
 
 각 프로젝트의 상세 정보는 `../PROJECT_PERFORMANCE_DETAIL.md`를 참조하세요.
 
+## 배포 가이드
+
+각 프로젝트를 실제로 배포하고 시각화하는 방법은 [`DEPLOYMENT_GUIDE.md`](./DEPLOYMENT_GUIDE.md)를 참조하세요.
+
+- **Streamlit Cloud**: 프로젝트 01, 03, 05, 06, 07
+- **HuggingFace Spaces**: 프로젝트 02
+- **AWS Lambda + API Gateway**: 프로젝트 04
+
 ## 라이선스
 
 이 포트폴리오의 모든 프로젝트는 MIT 라이선스 하에 배포됩니다.
