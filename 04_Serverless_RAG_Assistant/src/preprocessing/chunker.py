@@ -15,8 +15,16 @@ class DocumentChunker:
             chunk_size: 청크 크기 (토큰 수)
             chunk_overlap: 청크 간 겹치는 부분 (토큰 수)
         """
+        if chunk_size <= 0:
+            raise ValueError("chunk_size는 0보다 커야 합니다.")
+        if chunk_overlap < 0:
+            raise ValueError("chunk_overlap은 0 이상이어야 합니다.")
+        if chunk_overlap >= chunk_size:
+            raise ValueError("chunk_overlap은 chunk_size보다 작아야 합니다.")
+        
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
+        self.step_size = max(1, chunk_size - chunk_overlap)  # 무한 루프 방지
     
     def chunk_text(self, text: str) -> List[str]:
         """
@@ -33,17 +41,22 @@ class DocumentChunker:
         
         # 간단한 토큰 기반 청킹 (실제로는 더 정교한 토크나이저 사용)
         words = text.split()
-        chunks = []
         
+        if len(words) == 0:
+            return []
+        
+        chunks = []
         i = 0
+        
         while i < len(words):
             chunk_words = words[i:i + self.chunk_size]
             chunk = ' '.join(chunk_words)
             chunks.append(chunk)
             
-            # overlap만큼 뒤로 이동
-            i += self.chunk_size - self.chunk_overlap
+            # step_size만큼 이동 (무한 루프 방지)
+            i += self.step_size
             
+            # 종료 조건: 더 이상 새로운 청크를 만들 수 없을 때
             if i >= len(words):
                 break
         
@@ -64,4 +77,3 @@ class DocumentChunker:
             chunks = self.chunk_text(doc)
             all_chunks.extend(chunks)
         return all_chunks
-

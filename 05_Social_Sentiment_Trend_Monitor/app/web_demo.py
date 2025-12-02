@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 # 프로젝트 루트 경로 추가
-project_root = Path(__file__).parent.parent.parent
+project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from src.collectors.youtube_collector import YouTubeCollector
@@ -80,25 +80,30 @@ def main():
         
         daily_sentiment = df.groupby(df['date'].dt.date)['sentiment_score'].mean()
         
-        fig2 = px.line(
-            x=daily_sentiment.index,
-            y=daily_sentiment.values,
-            title="일별 평균 감정 점수",
-            labels={'x': '날짜', 'y': '감정 점수'}
-        )
-        st.plotly_chart(fig2, use_container_width=True)
-        
-        # 변화점 탐지
-        detector = ChangeDetector(method=detection_method)
-        change_points = detector.detect(list(daily_sentiment.values))
-        
-        if change_points:
-            st.subheader("변화점 탐지 결과")
-            st.write(f"총 {len(change_points)}개의 변화점이 탐지되었습니다.")
-            for cp in change_points[:5]:  # 최대 5개만 표시
-                st.write(f"- 인덱스 {cp}: {list(daily_sentiment.index)[cp]}")
+        if len(daily_sentiment) > 0:
+            fig2 = px.line(
+                x=daily_sentiment.index,
+                y=daily_sentiment.values,
+                title="일별 평균 감정 점수",
+                labels={'x': '날짜', 'y': '감정 점수'}
+            )
+            st.plotly_chart(fig2, use_container_width=True)
+            
+            # 변화점 탐지
+            detector = ChangeDetector(method=detection_method)
+            change_points = detector.detect(list(daily_sentiment.values))
+            
+            if change_points:
+                st.subheader("변화점 탐지 결과")
+                st.write(f"총 {len(change_points)}개의 변화점이 탐지되었습니다.")
+                
+                # 인덱스 범위 체크
+                sentiment_list = list(daily_sentiment.index)
+                valid_change_points = [cp for cp in change_points[:5] if 0 <= cp < len(sentiment_list)]
+                
+                for cp in valid_change_points:
+                    st.write(f"- 인덱스 {cp}: {sentiment_list[cp]}")
 
 
 if __name__ == "__main__":
     main()
-

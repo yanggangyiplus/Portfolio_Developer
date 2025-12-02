@@ -13,12 +13,12 @@ class RuleBasedAnalyzer:
         """감정 키워드 초기화"""
         self.positive_keywords = [
             '좋아', '좋다', '최고', '훌륭', '멋져', '사랑', '행복', '기쁘', '감사',
-            '만족', '추천', '완벽', '대박', '최고', '최고다', '좋은', '훌륭한'
+            '만족', '추천', '완벽', '대박', '최고다', '좋은', '훌륭한'
         ]
         
         self.negative_keywords = [
             '싫어', '싫다', '나쁘', '최악', '별로', '불만', '화나', '슬프', '우울',
-            '실망', '비추', '안좋', '나쁜', '최악', '최악이다', '별로다', '불만'
+            '실망', '비추', '안좋', '나쁜', '최악이다', '별로다'
         ]
         
         self.neutral_keywords = [
@@ -35,6 +35,9 @@ class RuleBasedAnalyzer:
         Returns:
             감정 점수 딕셔너리 (positive, negative, neutral)
         """
+        if not text:
+            return {'positive': 0.33, 'negative': 0.33, 'neutral': 0.34}
+        
         text_lower = text.lower()
         
         positive_score = sum(1 for keyword in self.positive_keywords if keyword in text_lower)
@@ -77,4 +80,3 @@ class RuleBasedAnalyzer:
             감정 점수 리스트
         """
         return [self.analyze(text) for text in texts]
-
