@@ -40,6 +40,30 @@
 └── requirements.txt
 ```
 
+## 실행 방법
+
+### 환경 설정
+```bash
+# 가상환경 생성 및 활성화
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 의존성 설치
+pip install -r requirements.txt
+```
+
+### 대시보드 실행
+```bash
+# 프로젝트 루트에서 실행
+streamlit run app/web/dashboard.py
+```
+
+### 데이터 소스 설정
+```bash
+# HTTP API 폴링 설정
+# configs/config_stream.yaml 파일에서 데이터 소스 URL 설정
+```
+
 ## 프로젝트 위치
 
 `../../AIOps-Realtime-Monitor/`

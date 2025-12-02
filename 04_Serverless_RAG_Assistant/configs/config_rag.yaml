@@ -1,0 +1,27 @@
+# RAG 서비스 설정 파일
+
+# AWS 설정
+aws:
+  region: "ap-northeast-2"
+  s3:
+    bucket_name: "rag-documents-bucket"
+  
+  dynamodb:
+    table_name: "rag-documents"
+
+# 임베딩 설정
+embedding:
+  provider: "huggingface"  # huggingface, openai, bedrock
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+
+# LLM 설정
+llm:
+  provider: "openai"  # openai, bedrock
+  model_name: "gpt-3.5-turbo"
+
+# RAG 설정
+rag:
+  chunk_size: 256
+  chunk_overlap: 50
+  top_k: 5
+

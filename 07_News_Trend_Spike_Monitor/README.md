@@ -42,6 +42,39 @@
 └── requirements.txt
 ```
 
+## 실행 방법
+
+### 환경 설정
+```bash
+# 가상환경 생성 및 활성화
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 의존성 설치
+pip install -r requirements.txt
+```
+
+### 대시보드 실행
+```bash
+# 프로젝트 루트에서 실행
+streamlit run app/web/main.py
+```
+
+### 감정 분석 테스트
+```bash
+# KcELECTRA 모델 테스트
+python -c "from src.nlp.sentiment_analyzer import SentimentAnalyzer; analyzer = SentimentAnalyzer(); print(analyzer.analyze('좋은 뉴스입니다.'))"
+```
+
+### 테스트 실행
+```bash
+# 모든 테스트 실행
+pytest tests/
+
+# 감정 분석 테스트
+pytest tests/test_sentiment_analyzer.py -v
+```
+
 ## 프로젝트 위치
 
 `../../News-trend-spike-monitor/`

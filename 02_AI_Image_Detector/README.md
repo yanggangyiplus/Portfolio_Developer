@@ -45,6 +45,42 @@
 └── requirements.txt
 ```
 
+## 실행 방법
+
+### 환경 설정
+```bash
+# 가상환경 생성 및 활성화
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 의존성 설치
+pip install -r requirements.txt
+```
+
+### 웹 데모 실행
+```bash
+# Streamlit 웹 데모 실행
+streamlit run app/web/web_demo.py
+```
+
+### 모델 학습
+```bash
+# CNN 모델 학습
+python src/training/train.py --model cnn --config configs/config_cnn.yaml
+
+# ViT 모델 학습
+python src/training/train.py --model vit --config configs/config_cnn.yaml
+```
+
+### 테스트 실행
+```bash
+# 모든 테스트 실행
+pytest tests/
+
+# 모델 테스트
+pytest tests/test_cnn_model.py -v
+```
+
 ## 프로젝트 위치
 
 `../../Ai-image-detector/`

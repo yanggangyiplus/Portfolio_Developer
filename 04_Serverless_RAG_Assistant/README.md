@@ -45,6 +45,43 @@ AWS Serverless 기반 RAG(Retrieval-Augmented Generation) 서비스
 └── requirements.txt
 ```
 
+## 실행 방법
+
+### 환경 설정
+```bash
+# 가상환경 생성 및 활성화
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 의존성 설치
+pip install -r requirements.txt
+```
+
+### 로컬 테스트
+```bash
+# Lambda 핸들러 로컬 테스트
+python -m src.api.query_handler
+
+# 문서 청킹 테스트
+python -c "from src.preprocessing.chunker import DocumentChunker; chunker = DocumentChunker(); print(chunker.chunk_text('테스트 문서입니다.'))"
+```
+
+### AWS 배포
+```bash
+# CDK 스택 배포
+cd infrastructure/cdk
+cdk deploy RagServerlessStack
+```
+
+### 테스트 실행
+```bash
+# 모든 테스트 실행
+pytest tests/
+
+# 청킹 모듈 테스트
+pytest tests/test_chunker.py -v
+```
+
 ## 프로젝트 위치
 
 `../../Serverless-RAG-Assistant/`

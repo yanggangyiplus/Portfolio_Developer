@@ -44,6 +44,42 @@
 └── requirements.txt
 ```
 
+## 실행 방법
+
+### 환경 설정
+```bash
+# 가상환경 생성 및 활성화
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 의존성 설치
+pip install -r requirements.txt
+
+# YouTube API 키 설정 (선택사항)
+export YOUTUBE_API_KEY="your_api_key_here"
+```
+
+### 대시보드 실행
+```bash
+# Streamlit 대시보드 실행
+streamlit run app/web_demo.py
+```
+
+### 감정 분석 테스트
+```bash
+# 규칙 기반 분석기 테스트
+python -c "from src.sentiment.rule_based_analyzer import RuleBasedAnalyzer; analyzer = RuleBasedAnalyzer(); print(analyzer.analyze('좋은 영상이네요!'))"
+```
+
+### 테스트 실행
+```bash
+# 모든 테스트 실행
+pytest tests/
+
+# 감정 분석 테스트
+pytest tests/test_sentiment_analyzer.py -v
+```
+
 ## 프로젝트 위치
 
 `../../Social-sentiment-trend-monitor/`

@@ -42,6 +42,30 @@
 └── requirements.txt
 ```
 
+## 실행 방법
+
+### 환경 설정
+```bash
+# 가상환경 생성 및 활성화
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 의존성 설치
+pip install -r requirements.txt
+```
+
+### 대시보드 실행
+```bash
+# 프로젝트 루트에서 실행
+streamlit run app/web/main.py
+```
+
+### 로그 수집 시작
+```bash
+# 실시간 로그 수집 (Nginx 예시)
+tail -f /var/log/nginx/access.log | python src/collector/nginx_parser.py
+```
+
 ## 프로젝트 위치
 
 `../../Log-AI-Predictor/`

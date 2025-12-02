@@ -1,0 +1,25 @@
+# 데이터 수집 설정
+
+# YouTube API 설정
+youtube:
+  api_key: ""  # 환경 변수에서 로드
+  max_results: 10
+  max_comments_per_video: 100
+
+# 감정 분석 설정
+sentiment:
+  method: "rule_based"  # rule_based, kobert, kcbert
+  rule_based:
+    positive_keywords_file: "configs/positive_keywords.txt"
+    negative_keywords_file: "configs/negative_keywords.txt"
+
+# 변화점 탐지 설정
+trend_detection:
+  method: "simple"  # simple, cusum, zscore, bayesian
+  threshold: 0.3
+
+# 데이터베이스 설정
+database:
+  type: "sqlite"
+  path: "data/sentiment_trends.db"
+
